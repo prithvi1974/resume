@@ -1,0 +1,203 @@
+<div class="banner" id="home">
+    <div class="banner-layer">
+        <div class="banner-content">
+            <h1>{{ sections.banner.head }}</h1>
+            <div class="seperator"></div>
+            <span class="banner-desc">{{ sections.banner.desc }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="nav" id="nav">
+    <i class="fas fa-bars" id="nav-open" onclick="navbar.toggle()"></i>
+    <ul class="topNav" id="topNav">
+        {{# each sections.name as |navItem|}}
+            <li class="navItem"><a href="#{{ navItem.link }}" class="navLink" onclick="navbar.performClick()">{{ navItem.val }}</a></li>
+        {{/each}}
+    </ul>
+</div>
+
+<div class="section" id="{{ sections.name.1.link }}">
+    <h2 class="section-head section-head-right">{{ sections.name.1.val }}</h2>
+    <div class="two-third">
+        <h2>{{{ sections.about.head }}}</h2>
+        {{{ sections.about.desc }}}
+        <button class="btn-dark" onclick="location.href='{{ info.resumeURL }}'">DOWNLOAD CV</button>
+    </div>
+    <div class="third">
+        <div class="avatar"></div>
+        <div class="follow m-0 p-0">
+            {{# each sections.about.followItems as |follow| }}
+                <div class="followItem">
+                    <a class="followLink" href="{{ follow.link }}">
+                        <i class="{{ follow.icon }}"></i>
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="section" id="{{ sections.name.2.link }}">
+    <h2 class="section-head section-head-left">{{ sections.name.2.val }}</h2>
+    <div class="p-1">
+        {{# each sections.technologies.tech as |tech|}}
+        <div class="tech"
+             style="background-image: url('{{ tech.img }}')"
+             onclick="{{ tech.modal.name }}.show()">
+            <div class="tech-inner">
+                <div class="tech-head">{{ tech.name }}</div>
+                <div class="tech-desc">{{ tech.brief }}</div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<div class="section" id="{{ sections.name.3.link }}">
+    <h2 class="section-head section-head-right">{{ sections.name.3.val }}</h2>
+    <ul class="projects">
+        {{# each sections.projects as |project|}}
+        <li class="proj">
+            <div class="proj-head proj-head-left">
+                <div class="proj-title">{{ project.title }}</div>
+                <div class="proj-year">{{ project.year }}</div>
+            </div>
+            <div class="proj-desc">{{{ project.desc }}}</div>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+<div class="section" id="{{ sections.name.4.link }}">
+    <h2 class="section-head section-head-left">{{ sections.name.4.val }}</h2>
+    <div class="carousel" id="{{ sections.testimonials.carousel.id }}">
+        <div class="slides">
+            {{# each sections.testimonials.carousel.slides as |slide| }}
+            <div class="slide">
+                <div class="testimonial">
+                    <div class="text-center p-1">
+                        <div class="testimonial-image-container">
+                            <img src="{{ slide.img }}" class="testimonial-image" alt="">
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="testimonial-head">{{ slide.person }}</div>
+                            <div class="testimonial-sub-head">{{ slide.designation }}</div>
+                            <div class="testimonial-desc">{{{ slide.desc }}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="section" id="{{ sections.name.5.link }}">
+    <h2 class="section-head section-head-right">{{ sections.name.5.val }}</h2>
+    <div class="gallery">
+        <div class="col" id="col-1">
+            {{# each sections.gallery.col1 as |img|}}
+                <img src="{{ img }}" alt="">
+            {{/each}}
+        </div><div class="col" id="col-2">
+            {{# each sections.gallery.col2 as |img|}}
+                <img src="{{ img }}" alt="">
+            {{/each}}
+        </div><div class="col" id="col-3">
+            {{# each sections.gallery.col3 as |img|}}
+                <img src="{{ img }}" alt="">
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="section" id="{{ sections.name.6.link }}">
+    <div class="tint-white">
+        <h2 class="section-head section-head-right">{{ sections.name.6.val }}</h2>
+        <h2>Feel free to drop a message</h2>
+        <h3>Lets connect over a coffee...</h3><hr>
+        <br>
+        <div>
+            <div class="half">
+                <div id="map"></div>
+                <script>
+                    function initMap() {
+                        const pointer = {lat:28.449412, lng:77.052946};
+                        const map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 12,
+                            center: pointer,
+                            mapTypeControlOptions: {
+                                mapTypeIds: [google.maps.MapTypeId.ROADMAP]
+                            },
+                            disableDefaultUI: true,
+                            mapTypeControl: true,
+                            scaleControl: true,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+                        const marker = new google.maps.Marker({position: pointer, map: map});
+                    }
+                    initMap();
+                </script>
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANO_wfg0VHEE4Va6bikQvXNJHIVlc2SFg&callback=initMap">
+                </script>
+            </div><div class="half">
+                <div  class="contact-form">
+                    <div class="form-inp">
+                        <i class="form-error fas fa-exclamation-circle" id="name-err"></i>
+                        <input type="text" class="contact-form-input" id="name" placeholder="👨 Name">
+                    </div>
+                    <div class="form-inp">
+                        <i class="form-error fas fa-exclamation-circle" id="email-err"></i>
+                        <input type="email" class="contact-form-input" id="email" placeholder="️📨 E-mail">
+                    </div>
+                    <div class="form-inp">
+                        <i class="form-error fas fa-exclamation-circle" id="phone-err"></i>
+                        <input type="tel" class="contact-form-input" id="phone" placeholder="📲 Mobile Number">
+                    </div>
+                    <div class="form-inp">
+                        <i class="form-error fas fa-exclamation-circle" id="message-err"></i>
+                        <textarea class="contact-form-textarea" id="message" placeholder="💬 Message" rows="5"></textarea>
+                    </div>
+                    <div class="form-inp">
+                        <i class="form-error fas fa-exclamation-circle"></i>
+                        <button class="contact-form-submit btn-dark" onclick="contactForm.submit()">Connect</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="{{ sections.name.7.link }}">
+    <div class="text-center">
+        <h3>Lorel ipsum dolor sit amet</h3>
+        <div class="follow m-0 p-0">
+            {{# each sections.about.followItems as |follow| }}
+                <div class="followItem">
+                    <a class="followLink" href="{{ follow.link }}">
+                        <i class="{{ follow.icon }}"></i>
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="modals">
+{{# each sections.technologies.tech as |tech|}}
+    <div class="modal" id="{{ tech.id }}-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>{{ tech.modal.head }}</h2>
+                <span class="close" onclick="{{ tech.modal.name }}.hide()">
+                    &times;
+                </span>
+            </div>
+            <div class="modal-body">
+                {{{ tech.modal.desc }}}
+            </div>
+        </div>
+    </div>
+{{/each}}
+</div>

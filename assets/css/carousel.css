@@ -1,0 +1,75 @@
+.carousel {
+    width: 100%;
+    height: 200px;
+    margin: 10px 0;
+}
+
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.slide {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    -webkit-transform: translateY(150%);
+    -moz-transform: translateY(150%);
+    -ms-transform: translateY(150%);
+    -o-transform: translateY(150%);
+    transform: translateY(150%);
+    transition: all 1s ease-in-out;
+}
+
+.slide-active {
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    opacity: 1;
+}
+
+.slider {
+    padding: 5px 0;
+    text-align: center;
+}
+
+.dot {
+    display: inline-block;
+    margin: 0 2px;
+    height: 10px;
+    width: 10px;
+    background-color: #ddd;
+    border: 1px solid #333;
+    border-radius: 50%;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.dot-active {
+    background-color: #ffa500;
+}
+
+.slider-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    background-color: #000;
+}
+
+.slider-prev {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-color: #000;
+}
